@@ -1,0 +1,78 @@
+# =========================
+# Virtual Environment
+# =========================
+.venv/
+venv/
+env/
+
+# =========================
+# Python Cache
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore pycache in subfolders
+**/__pycache__/
+
+# =========================
+# Jupyter / IDE
+# =========================
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Large Dataset Folders
+# =========================
+raw_data/
+processed_data/
+outputs/
+
+# If you later create these
+data/
+dataset/images/
+dataset/slices/
+
+# =========================
+# Model Weights / Checkpoints
+# =========================
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.joblib
+
+# =========================
+# Logs / Training Results
+# =========================
+runs/
+logs/
+results/
+checkpoints/
+
+# =========================
+# Archives / Large Files
+# =========================
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.nii
+*.nii.gz
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.bak

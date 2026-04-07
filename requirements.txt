@@ -1,0 +1,6 @@
+nibabel
+opencv-python
+pandas
+numpy
+tqdm
+scikit-learn
