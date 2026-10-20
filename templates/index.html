@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroClear - Alzheimer's MRI Analysis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3fbf9;--surface:#fff;--surface2:#eef8f5;--border:#cfe6df;--accent:#2e8b80;--accent2:#236e65;--soft:#dff3ee;--text:#173d3a;--muted:#607c78;--subtle:#89a7a2;--success:#207869;--danger:#c2414d;--successbg:#ecfbf6;--dangerbg:#fff2f3;--radius:16px;--shadow:0 10px 28px rgba(23,61,58,.08);--shadowlg:0 22px 54px rgba(23,61,58,.12)}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:"DM Sans",sans-serif;background:radial-gradient(circle at top left,rgba(111,193,183,.16),transparent 24%),linear-gradient(180deg,#f6fcfb 0%,#f1faf8 100%);color:var(--text);min-height:100vh}nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:74px;background:rgba(255,255,255,.9);border-bottom:1px solid var(--border);backdrop-filter:blur(14px)}.logo{display:flex;align-items:center;gap:12px;font-family:"DM Serif Display",serif;font-size:1.3rem}.logo-mark{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#fff;box-shadow:var(--shadow);border:1px solid var(--border);flex-shrink:0}.logo-mark img{width:100%;height:100%;object-fit:cover}.badge{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);background:var(--soft);border-radius:999px;padding:5px 10px}.nav-wrap,.nav-actions,.nav-user,.hero-actions,.upload-actions,.result-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.nav-actions button,.nav-user button{border:none;background:none;color:var(--muted);font:inherit;font-weight:600;cursor:pointer}.nav-actions button:hover,.nav-user button:hover{color:var(--accent)}.nav-btn,.nav-pill{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--muted);text-decoration:none;font-weight:700}.nav-btn.primary{background:linear-gradient(135deg,var(--accent),#58b2a7);border-color:transparent;color:#fff}.nav-pill{background:var(--surface2);color:var(--text);gap:10px}.avatar{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#58b2a7);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700}.screen{display:none;animation:fade .3s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}.container{max-width:1140px;margin:0 auto;padding:46px 24px}.container-sm{max-width:760px;margin:0 auto;padding:40px 24px}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 20px;border-radius:12px;border:none;cursor:pointer;font:inherit;font-weight:700;text-decoration:none}.primary{background:linear-gradient(135deg,var(--accent),#58b2a7);color:#fff}.secondary{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}.outline{background:transparent;color:var(--accent);border:1px solid var(--accent)}.hero{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:var(--soft);color:var(--accent2);font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}.title{font-family:"DM Serif Display",serif;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.06;margin-bottom:16px}.title em{color:var(--accent);font-style:italic}.desc,.section p.lead,.locked-state p,.processing-card p,.error-card p,.diag-text,.reasoning p,.disclaimer{color:var(--muted);line-height:1.75}.brain-card{padding:24px;border-radius:24px;background:linear-gradient(180deg,#ffffff 0%,#f5fbfa 100%);border:1px solid var(--border);box-shadow:var(--shadowlg)}.brain-visual{aspect-ratio:1;border-radius:20px;background:linear-gradient(135deg,#1e5f58 0%,#2e8b80 58%,#83d1c6 100%);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;overflow:hidden}.brain-visual:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 5px,rgba(255,255,255,.05) 5px,rgba(255,255,255,.05) 6px)}.mini-grid,.meta-grid,.info-stack,.grid3{display:grid;gap:16px}.mini-grid{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(3,1fr)}.mini,.meta-item,.info-chip,.pill,.step{padding:16px;border-radius:14px;background:var(--surface2);border:1px solid var(--border)}.mini strong,.meta-item strong,.tiny,.field label{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--subtle);margin-bottom:4px}.section{margin-top:52px}.section h2,.upload-title,.result-title,.processing-card h2,.error-card h2,.locked-state h3{font-family:"DM Serif Display",serif}.section h2{font-size:1.9rem;margin-bottom:6px}.class-badge{display:inline-block;margin-bottom:8px;font-family:"DM Serif Display",serif;font-size:1.35rem}.green{color:var(--success)}.red{color:var(--danger)}.blue{color:var(--accent)}.gate-banner,.helper{margin-top:18px;padding:16px 18px;border-radius:14px;background:#f7fffd;border:1px solid var(--border);color:var(--muted)}form.card{padding:24px}.upload-title{font-size:2rem;margin-bottom:6px}.upload-sub{color:var(--muted);line-height:1.7;margin-bottom:20px}.dropzone{position:relative;padding:34px 16px;border:2px dashed #b5d9d0;border-radius:var(--radius);text-align:center;cursor:pointer;background:#fbfffe;transition:.2s}.dropzone:hover,.dropzone.drag-over{border-color:var(--accent);background:var(--soft)}.dropzone input{position:absolute;inset:0;opacity:0;cursor:pointer}.drop-icon{width:58px;height:58px;margin:0 auto 14px;border-radius:16px;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}.field{display:flex;flex-direction:column;gap:7px}.field input,.field select{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--border);background:#fff;color:var(--text);font:inherit}.hint{font-size:.84rem;color:var(--subtle)}.inline-msg{display:none;margin-top:16px;padding:14px 16px;border-radius:12px;line-height:1.55;font-size:.92rem}.inline-msg.visible{display:block}.inline-msg.error{background:var(--dangerbg);color:var(--danger);border:1px solid #efc0c6}.inline-msg.status{background:var(--soft);color:var(--accent2);border:1px solid #bfe0d9}.preview{display:none;align-items:center;gap:16px;margin-top:16px;padding:16px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius)}.preview.visible{display:flex}.thumb{width:72px;height:72px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--border);flex-shrink:0}.thumb img,.image-area img{width:100%;height:100%;object-fit:cover}.preview-name{font-weight:700;margin-bottom:3px}.preview-meta{font-size:.88rem;color:var(--subtle)}.preview-badge{margin-left:auto;padding:6px 10px;border-radius:999px;background:var(--successbg);color:var(--success);font-size:.78rem;font-weight:700}.locked-state,.error-card,.processing-card{text-align:center}.locked-state{padding:28px}.locked-state h3{font-size:1.7rem;margin-bottom:8px}#processing{min-height:calc(100vh - 74px);align-items:center;justify-content:center}.processing-card{width:min(440px,calc(100vw - 24px));padding:40px 30px}.spinner{position:relative;width:90px;height:90px;margin:0 auto 20px}.ring,.ring2{position:absolute;inset:0;border-radius:50%;animation:spin 1.2s linear infinite}.ring{border:3px solid var(--border);border-top-color:var(--accent)}.ring2{inset:10px;border:2px solid transparent;border-top-color:rgba(46,139,128,.38);animation-direction:reverse}.center{position:absolute;inset:22px;border-radius:50%;background:var(--soft);display:flex;align-items:center;justify-content:center}@keyframes spin{to{transform:rotate(360deg)}}.progress{height:6px;background:var(--surface2);border-radius:999px;overflow:hidden;margin-bottom:16px}.progress span{display:block;width:88%;height:100%;background:linear-gradient(90deg,var(--accent),#7ad0c4);animation:pulse 1.6s ease-in-out infinite}@keyframes pulse{0%,100%{opacity:.65}50%{opacity:1}}.steps{display:grid;gap:10px;text-align:left;color:var(--muted);font-size:.9rem}.result-header,.label-row,.metric-row,.prob-head,.image-label{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.result-grid{display:grid;grid-template-columns:320px 1fr;gap:16px}.image-card,.diag,.prob,.meta,.reasoning,.disclaimer{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}.image-area{aspect-ratio:1;background:linear-gradient(135deg,#1e5f58,#2e8b80);display:flex;align-items:center;justify-content:center;overflow:hidden}.diag,.prob,.meta,.reasoning{padding:22px}.diag-badge{padding:7px 12px;border-radius:999px;font-size:.82rem;font-weight:700}.diag-badge.ad{background:var(--dangerbg);color:var(--danger)}.diag-badge.healthy{background:var(--successbg);color:var(--success)}.diag-code{font-family:"DM Serif Display",serif;font-size:2.1rem;margin-bottom:6px}.bar,.prob-bar{height:10px;border-radius:999px;overflow:hidden;background:var(--surface2)}.fill,.prob-fill{height:100%}.fill.ad,.prob-fill.ad{background:linear-gradient(90deg,#ef7d8b,#c2414d)}.fill.healthy,.prob-fill.healthy{background:linear-gradient(90deg,#4cb9a5,#207869)}.prob h3,.meta h3,.reasoning h3{margin-bottom:14px}.prob-row{margin-top:14px}.meta-grid{grid-template-columns:repeat(2,1fr)}.disclaimer{margin-top:16px;padding:16px 18px}.error-card{max-width:520px;margin:32px auto;padding:32px}.error-box{margin-top:16px;padding:16px;border-radius:12px;background:var(--dangerbg);color:var(--danger);border:1px solid #efc0c6;text-align:left}footer{max-width:1140px;margin:0 auto;padding:0 24px 28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--subtle);font-size:.9rem}@media(max-width:920px){.hero,.grid3,.result-grid{grid-template-columns:1fr}}@media(max-width:700px){nav{padding:14px 16px;height:auto;min-height:74px;flex-wrap:wrap}.nav-wrap{width:100%;justify-content:space-between}.two-col,.meta-grid,.mini-grid{grid-template-columns:1fr}.processing-card,form.card{padding:20px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo"><span class="logo-mark"><img src="/static/neuroclear-logo.png" alt="NeuroClear logo"></span>NeuroClear <span class="badge">Clinical Preview</span></div>
+  <div class="nav-wrap">
+    <div class="nav-actions">
+      <button onclick="showScreen('home')">Home</button>
+      <button onclick="document.getElementById('workflow').scrollIntoView({behavior:'smooth'})">Workflow</button>
+      <button onclick="showScreen('upload')">Analysis</button>
+    </div>
+    {% if is_logged_in %}
+    <div class="nav-user">
+      <div class="nav-pill"><span class="avatar">{{ (current_name or current_user or 'U')[0]|upper }}</span><span>{{ current_name or current_user }}</span></div>
+      <form method="post" action="/logout"><button type="submit">Logout</button></form>
+    </div>
+    {% else %}
+    <div class="nav-user">
+      <a class="nav-btn" href="/auth/login">Login</a>
+      <a class="nav-btn primary" href="/auth/register">Register</a>
+    </div>
+    {% endif %}
+  </div>
+</nav>
+<div id="home" class="screen active">
+  <div class="container">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Hospital-style MRI decision support</div>
+        <h1 class="title">Early <em>Alzheimer disease prediction</em> powered by Explainable AI.</h1>
+        <p class="desc">Browse the NeuroClear landing page first, review how the workflow works, and move into secure MRI analysis once you sign in. After authentication, your account appears at the top right and you return right here on the home screen.</p>
+        <div class="hero-actions">
+          {% if is_logged_in %}
+          <button class="btn primary" onclick="showScreen('upload')">Start Analysis</button>
+          {% else %}
+          <a class="btn primary" href="/auth/login">Login to Continue</a>
+          {% endif %}
+          <button class="btn secondary" onclick="document.getElementById('workflow').scrollIntoView({behavior:'smooth'})">See Workflow</button>
+        </div>
+        {% if not is_logged_in %}
+        <div class="gate-banner">Login or register from the top-right corner to unlock MRI upload, backend inference, and protected result views.</div>
+        {% endif %}
+      </div>
+      <div class="brain-card">
+        <div class="brain-visual"><svg viewBox="0 0 200 200" width="74%" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="100" rx="80" ry="90" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/><path d="M40 100 Q60 60 100 55 Q140 60 160 100 Q140 140 100 145 Q60 140 40 100Z" stroke="rgba(255,255,255,.45)" stroke-width="1.5" fill="rgba(255,255,255,.05)"/><path d="M100 55 C100 55 95 75 90 100 S95 130 100 145" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/><circle cx="75" cy="92" r="6" fill="rgba(255,255,255,.76)"/><circle cx="125" cy="92" r="6" fill="rgba(255,255,255,.76)"/></svg></div>
+        <div class="mini-grid"><div class="mini"><strong>Environment</strong><span>Public home, protected analysis</span></div><div class="mini"><strong>Outputs</strong><span>CN, MCI, AD plus 3 XAI modes</span></div><div class="mini"><strong>Age Range</strong><span>40 to 100</span></div><div class="mini"><strong>Workflow</strong><span>Login, upload, choose XAI</span></div></div>
+      </div>
+    </section>
+    <section class="section" id="workflow">
+      <h2>How It Works</h2>
+      <p class="lead">The interface now feels closer to a hospital website: clean, reassuring, and access-controlled where it matters.</p>
+      <div class="grid3">
+        <div class="card step"><strong class="step-num">01</strong><h3>Land on home</h3><p>Users first see the public landing page with navigation, workflow details, and login or register actions in the top corner.</p></div>
+        <div class="card step"><strong class="step-num">02</strong><h3>Authenticate</h3><p>Login or register on the dedicated auth page, then return automatically to the same home page.</p></div>
+        <div class="card step"><strong class="step-num">03</strong><h3>Analyze securely</h3><p>Authenticated users can upload MRI scans, send them to the backend model, and review prediction plus explainability output.</p></div>
+      </div>
+    </section>
+    <section class="section">
+      <h2>Prediction Views</h2>
+      <p class="lead">Designed to support quick interpretation while keeping the interface soft and clinical.</p>
+      <div class="grid3">
+        <div class="card pill"><span class="class-badge green">CN</span><p>Cognitively normal probability generated from the uploaded MRI slice.</p></div>
+        <div class="card pill"><span class="class-badge blue">MCI</span><p>Mild cognitive impairment probability from the ensemble classification model.</p></div>
+        <div class="card pill"><span class="class-badge red">XAI</span><p>Choose Grad-CAM, LIME, or SHAP for the visual explanation pass.</p></div>
+      </div>
+    </section>
+  </div>
+</div>
+<div id="upload" class="screen">
+  <div class="container-sm">
+    {% if is_logged_in %}
+    <div class="upload-title">Upload MRI Scan</div>
+    <p class="upload-sub">Upload an MRI file, enter patient metadata, choose an explanation method, and send the request to the backend model.</p>
+    <form id="analysisForm" class="card">
+      <div class="dropzone" id="dropzone" onclick="document.getElementById('fileInput').click()">
+        <input type="file" id="fileInput" name="mri_file" accept=".png,.jpg,.jpeg,.nii,.dcm">
+        <div class="drop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <h3>Drop your MRI scan here</h3>
+        <p>or <strong>browse files</strong> from your computer</p>
+      </div>
+      <div class="preview" id="filePreviewCard">
+        <div class="thumb" id="previewThumb"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#89A7A2" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <div><div class="preview-name" id="previewName">No file selected</div><div class="preview-meta" id="previewMeta">Accepted: PNG, JPG, NIfTI, DICOM up to 50 MB</div></div>
+        <span class="preview-badge">Ready</span>
+      </div>
+      <div class="two-col">
+        <div class="field"><label for="ageInput">Age</label><input type="number" id="ageInput" name="age" min="40" max="100" placeholder="Enter age"><span class="hint">Allowed range: 40 to 100 years.</span></div>
+        <div class="field"><label for="genderInput">Gender</label><select id="genderInput" name="gender"><option value="">Select gender</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select><span class="hint">Included in the model metadata payload.</span></div>
+      </div>
+      <div class="field" style="margin-top:18px"><label for="xaiMethodInput">XAI Method</label><select id="xaiMethodInput" name="xai_method"><option value="Grad-CAM">Grad-CAM</option><option value="LIME">LIME</option><option value="SHAP">SHAP</option></select><span class="hint">SHAP needs a background tensor file and is usually the slowest option.</span></div>
+      <div id="formError" class="inline-msg error"></div>
+      <div id="formStatus" class="inline-msg status"></div>
+      <div class="upload-actions"><button type="submit" class="btn primary" id="analyzeBtn">Analyze MRI</button><button type="button" class="btn secondary" onclick="resetFormState()">Reset</button><button type="button" class="btn outline" onclick="showScreen('home')">Back Home</button></div>
+    </form>
+    {% else %}
+    <div class="card locked-state">
+      <h3>Login required for MRI analysis</h3>
+      <p>The home page stays open to everyone, but file upload and backend inference are available only after login or registration.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn primary" href="/auth/login">Login</a>
+        <a class="btn secondary" href="/auth/register">Register</a>
+      </div>
+    </div>
+    {% endif %}
+    <div class="card helper"><strong>Before you upload</strong><ul><li>Use anonymized scans without patient identifiers.</li><li>Only supported MRI files are accepted for backend processing.</li><li>This interface is for research workflows and should not replace clinical evaluation.</li></ul></div>
+  </div>
+</div>
+<div id="processing" class="screen">
+  <div class="card processing-card">
+    <div class="spinner"><div class="ring"></div><div class="ring2"></div><div class="center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 7c2.5-2 5-3 7-3s4.5 1 7 3M5 17c2.5 2 5 3 7 3s4.5-1 7-3"/></svg></div></div>
+    <h2>Analyzing MRI Scan</h2>
+    <p>The backend is validating the upload, preparing the MRI tensor, and running your PyTorch model plus the selected XAI module.</p>
+    <div class="progress"><span></span></div>
+    <div class="steps"><div>Validating MRI file, metadata, and XAI method</div><div>Loading PyTorch weights and optional SHAP background</div><div>Computing CN, MCI, AD probabilities and the requested explanation output</div></div>
+  </div>
+</div>
+<div id="result" class="screen">
+  <div class="container">
+    <div class="result-header"><div><div class="result-title">Analysis Result</div><div class="result-time" id="resultTimestamp">Completed just now</div></div><div class="hero-actions"><button class="btn secondary" onclick="showScreen('upload')">Analyze Another Scan</button></div></div>
+    <div class="result-grid">
+      <div>
+        <div class="image-card"><div class="image-area"><img id="resultPreview" alt="MRI preview"></div><div class="image-label"><span id="resultFileName">brain_mri.png</span><strong id="resultFileSize">0 MB</strong></div></div>
+        <div class="info-stack" style="margin-top:16px"><div class="info-chip"><strong>Model:</strong> <span id="resultModelName">Waiting for backend</span></div><div class="info-chip"><strong>Inference time:</strong> <span id="resultInferenceTime">-</span></div><div class="info-chip"><strong>XAI output:</strong> <span id="resultXaiMode">Textual reasoning</span></div></div>
+        <div class="image-card" style="margin-top:16px"><div class="image-area"><img id="xaiPreview" alt="XAI heatmap"></div><div class="image-label"><span>Highlighted MRI regions</span><strong id="xaiLabel">No heatmap</strong></div></div>
+      </div>
+      <div>
+        <div class="diag"><div class="label-row"><span class="tiny">Predicted Diagnosis</span><span class="diag-badge" id="resultBadge">Pending</span></div><div class="diag-code" id="resultDiagnosis">-</div><div class="diag-text" id="resultSummary">Prediction details will appear here after backend analysis.</div><div style="margin-top:18px"><div class="metric-row" style="margin-bottom:8px"><span>Prediction Score</span><span id="resultConfidence">0%</span></div><div class="bar"><div class="fill" id="resultConfidenceBar" style="width:0%"></div></div></div></div>
+        <div class="prob" style="margin-top:16px"><h3>Probability Breakdown</h3><div class="prob-row"><div class="prob-head"><span>CN</span><span id="cnPct">0%</span></div><div class="prob-bar"><div class="prob-fill healthy" id="cnBar" style="width:0%"></div></div></div><div class="prob-row"><div class="prob-head"><span>MCI</span><span id="mciPct">0%</span></div><div class="prob-bar"><div class="prob-fill" id="mciBar" style="width:0%;background:linear-gradient(90deg,#7cb4f7,#2e8b80)"></div></div></div><div class="prob-row"><div class="prob-head"><span>AD</span><span id="adPct">0%</span></div><div class="prob-bar"><div class="prob-fill ad" id="adBar" style="width:0%"></div></div></div></div>
+        <div class="meta" style="margin-top:16px"><h3>Patient Metadata</h3><div class="meta-grid"><div class="meta-item"><strong>Age</strong><span id="metaAge">-</span></div><div class="meta-item"><strong>Gender</strong><span id="metaGender">-</span></div></div></div>
+        <div class="reasoning" style="margin-top:16px"><h3>XAI Reasoning</h3><p id="reasoningText">Explanation text will appear here when the backend returns it.</p></div>
+        <div class="disclaimer">This result is generated by an AI model for research purposes only. It is not a clinical diagnosis and should be reviewed by a qualified clinician.</div>
+        <div class="result-actions"><button class="btn primary" onclick="showScreen('upload')">Upload New Scan</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="error-state" class="screen"><div class="container-sm"><div class="card error-card"><h2>Analysis Failed</h2><p>The backend could not complete this request. Check the message below, fix the inputs or configuration, and try again.</p><div id="errorMessage" class="error-box">Unknown error</div><div class="upload-actions" style="justify-content:center"><button class="btn primary" onclick="showScreen('upload')">Try Again</button><button class="btn secondary" onclick="showScreen('home')">Go Home</button></div></div></div></div>
+<footer><div>© 2026 NeuroClear</div><div>Hospital-inspired research preview for Alzheimer's MRI analysis</div></footer>
+<script>
+const screens=["home","upload","processing","result","error-state"];
+const isLoggedIn={{ 'true' if is_logged_in else 'false' }};
+function showScreen(id){screens.forEach(s=>document.getElementById(s).classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
+function setInlineMessage(kind,message){const errorBox=document.getElementById("formError");const statusBox=document.getElementById("formStatus");if(!errorBox||!statusBox)return;errorBox.classList.remove("visible");statusBox.classList.remove("visible");if(!message)return;const target=kind==="error"?errorBox:statusBox;target.textContent=message;target.classList.add("visible")}
+function formatFileMeta(file){const sizeMb=(file.size/(1024*1024)).toFixed(2);const extension=file.name.includes(".")?file.name.split(".").pop().toUpperCase():"FILE";return `${sizeMb} MB - ${extension}`}
+function validateForm({file,age,gender,xaiMethod}){if(!file)return"Please upload an MRI file before running the analysis.";if(!Number.isInteger(age)||age<40||age>100)return"Age must be a whole number between 40 and 100.";if(!["Male","Female","Other"].includes(gender))return"Please select Male, Female, or Other for Gender.";if(!["Grad-CAM","LIME","SHAP"].includes(xaiMethod))return"Please select a valid XAI method.";return""}
+function handleFileSelect(file){if(!file)return;document.getElementById("previewName").textContent=file.name;document.getElementById("previewMeta").textContent=formatFileMeta(file);const thumb=document.getElementById("previewThumb");if(file.type.startsWith("image/")){const reader=new FileReader();reader.onload=e=>{thumb.innerHTML=`<img src="${e.target.result}" alt="Selected MRI preview">`};reader.readAsDataURL(file)}else{thumb.innerHTML='<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2E8B80" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>'}document.getElementById("filePreviewCard").classList.add("visible");setInlineMessage("","")}
+function resetFormState(){document.getElementById("analysisForm").reset();document.getElementById("filePreviewCard").classList.remove("visible");document.getElementById("previewThumb").innerHTML='<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#89A7A2" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>';setInlineMessage("","")}
+function renderResult(payload){const prediction=payload.prediction;const cn=prediction.probabilities.cn;const mci=prediction.probabilities.mci;const ad=prediction.probabilities.ad;const className=prediction.predicted_key==="ad"?"ad":prediction.predicted_key==="mci"?"mci":"healthy";const badge=document.getElementById("resultBadge");badge.className=`diag-badge ${className}`;badge.textContent=prediction.predicted_label;if(className==="mci"){badge.style.background="#eef5ff";badge.style.color="#2f6db5"}else{badge.style.background="";badge.style.color=""}document.getElementById("resultDiagnosis").textContent=prediction.diagnosis_code;document.getElementById("resultSummary").textContent=`${prediction.predicted_label} with ${prediction.confidence}% model confidence.`;document.getElementById("resultConfidence").textContent=`${prediction.confidence}%`;const confidenceBar=document.getElementById("resultConfidenceBar");confidenceBar.className=`fill ${className==="mci"?"healthy":className}`;confidenceBar.style.width=`${prediction.confidence}%`;confidenceBar.style.background=className==="mci"?"linear-gradient(90deg,#7cb4f7,#2e8b80)":"";document.getElementById("cnPct").textContent=`${cn}%`;document.getElementById("cnBar").style.width=`${cn}%`;document.getElementById("mciPct").textContent=`${mci}%`;const mciBar=document.getElementById("mciBar");mciBar.className="prob-fill";mciBar.style.width=`${mci}%`;mciBar.style.background="linear-gradient(90deg,#7cb4f7,#2e8b80)";document.getElementById("adPct").textContent=`${ad}%`;document.getElementById("adBar").style.width=`${ad}%`;document.getElementById("metaAge").textContent=payload.metadata.age;document.getElementById("metaGender").textContent=payload.metadata.gender;document.getElementById("reasoningText").textContent=payload.xai.text||"No textual explanation returned.";document.getElementById("resultTimestamp").textContent=`Completed - ${payload.timestamp}`;document.getElementById("resultModelName").textContent=payload.model_name;document.getElementById("resultInferenceTime").textContent=`${payload.inference_time}s`;document.getElementById("resultFileName").textContent=payload.file.name;document.getElementById("resultFileSize").textContent=`${payload.file.size_mb} MB`;const preview=document.getElementById("resultPreview");if(payload.file.preview_url){preview.src=payload.file.preview_url;preview.style.display="block"}else{preview.removeAttribute("src");preview.style.display="none"}const xaiPreview=document.getElementById("xaiPreview");if(payload.xai.image_url){xaiPreview.src=payload.xai.image_url;xaiPreview.style.display="block";document.getElementById("xaiLabel").textContent=`${payload.xai.method} output`;document.getElementById("resultXaiMode").textContent=payload.xai.method}else{xaiPreview.removeAttribute("src");xaiPreview.style.display="none";document.getElementById("xaiLabel").textContent="No visualization returned";document.getElementById("resultXaiMode").textContent=payload.xai.method}}
+async function submitAnalysis(event){event.preventDefault();const file=document.getElementById("fileInput").files[0];const age=Number.parseInt(document.getElementById("ageInput").value,10);const gender=document.getElementById("genderInput").value;const xaiMethod=document.getElementById("xaiMethodInput").value;const validationError=validateForm({file,age,gender,xaiMethod});if(validationError){setInlineMessage("error",validationError);return}const formData=new FormData();formData.append("mri_file",file);formData.append("age",age);formData.append("gender",gender);formData.append("xai_method",xaiMethod);const analyzeBtn=document.getElementById("analyzeBtn");analyzeBtn.disabled=true;setInlineMessage("status",`Submitting MRI to the backend with ${xaiMethod}...`);showScreen("processing");try{const response=await fetch("/api/analyze",{method:"POST",body:formData});const payload=await response.json();if(!response.ok)throw new Error(payload.error||"Analysis failed.");renderResult(payload);showScreen("result")}catch(error){document.getElementById("errorMessage").textContent=error.message;showScreen("error-state")}finally{analyzeBtn.disabled=false}}
+if(isLoggedIn){document.getElementById("analysisForm")?.addEventListener("submit",submitAnalysis);document.getElementById("fileInput")?.addEventListener("change",event=>handleFileSelect(event.target.files[0]));const dropzone=document.getElementById("dropzone");["dragenter","dragover"].forEach(name=>dropzone?.addEventListener(name,event=>{event.preventDefault();dropzone.classList.add("drag-over")}));["dragleave","drop"].forEach(name=>dropzone?.addEventListener(name,()=>dropzone.classList.remove("drag-over")));dropzone?.addEventListener("drop",event=>{event.preventDefault();const file=event.dataTransfer.files[0];if(!file)return;const dataTransfer=new DataTransfer();dataTransfer.items.add(file);document.getElementById("fileInput").files=dataTransfer.files;handleFileSelect(file)})}
+</script>
+</body>
+</html>

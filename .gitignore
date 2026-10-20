@@ -77,3 +77,15 @@ checkpoints/
 # =========================
 *.tmp
 *.bak
+# Uploaded MRI images
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Generated explainability images
+static/xai/*
+!static/xai/.gitkeep
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example

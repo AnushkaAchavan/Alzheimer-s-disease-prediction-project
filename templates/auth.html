@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroClear Authentication</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eff9f7;--surface:rgba(255,255,255,.92);--surface2:#f7fffd;--border:#cde6e0;--accent:#2e8b80;--accent2:#1f7066;--text:#163a39;--muted:#5d7d79;--danger:#c2414d;--dangerbg:#fff2f3;--radius:22px;--shadow:0 24px 70px rgba(22,58,57,.12)}
+*{box-sizing:border-box;margin:0;padding:0}body{min-height:100vh;font-family:"DM Sans",sans-serif;background:radial-gradient(circle at top left,rgba(111,193,183,.28),transparent 28%),radial-gradient(circle at bottom right,rgba(46,139,128,.18),transparent 32%),linear-gradient(180deg,#f4fcfa 0%,#eaf7f5 100%);color:var(--text);padding:24px;display:flex;align-items:center;justify-content:center}.shell{width:min(1080px,100%);display:grid;grid-template-columns:1.05fr .95fr;gap:24px}.panel,.auth-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:blur(16px)}.panel{padding:38px;background:linear-gradient(160deg,rgba(46,139,128,.95),rgba(81,176,165,.88));color:#fff;position:relative;overflow:hidden}.panel:after{content:"";position:absolute;right:-48px;bottom:-48px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.12)}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.16);font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px}.panel h1{font-family:"DM Serif Display",serif;font-size:clamp(2.1rem,5vw,3.2rem);line-height:1.08;margin-bottom:14px}.panel p{max-width:36rem;color:rgba(255,255,255,.88);line-height:1.75}.panel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}.panel-item{padding:16px;border-radius:16px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.14)}.panel-item strong{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.72);margin-bottom:6px}.auth-card{padding:32px}.switcher{display:inline-flex;padding:6px;background:#e4f2ef;border:1px solid var(--border);border-radius:999px;margin-bottom:22px}.switcher a{padding:10px 16px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:700}.switcher a.active{background:#fff;color:var(--accent);box-shadow:0 8px 20px rgba(46,139,128,.14)}.auth-card h2{font-family:"DM Serif Display",serif;font-size:2rem;margin-bottom:8px}.sub{color:var(--muted);line-height:1.7;margin-bottom:22px}.error{margin-bottom:16px;padding:13px 14px;border-radius:14px;background:var(--dangerbg);border:1px solid #f1b7be;color:var(--danger);line-height:1.6}.field{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}.field label{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.field input{width:100%;padding:15px 16px;border-radius:14px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font:inherit}.field input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(46,139,128,.12)}.btn{width:100%;padding:15px 18px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--accent),#52b0a5);color:#fff;font:inherit;font-weight:700;cursor:pointer}.btn:hover{background:linear-gradient(135deg,var(--accent2),var(--accent))}.helper{margin-top:18px;padding:16px;border-radius:16px;background:#edf8f5;color:var(--muted);line-height:1.7}.helper code{font-family:inherit;font-weight:700;color:var(--text)}@media(max-width:860px){.shell{grid-template-columns:1fr}.panel-grid{grid-template-columns:1fr}.panel,.auth-card{padding:26px}}
+</style>
+</head>
+<body>
+  <main class="shell">
+    <section class="panel">
+      <div class="eyebrow">NeuroClear Access</div>
+      <h1>Secure entry for a calmer, hospital-style MRI workflow.</h1>
+      <p>Users can browse the home page first, then open login or registration from the top corner before entering the protected analysis experience.</p>
+      <div class="panel-grid">
+        <div class="panel-item"><strong>Public Home</strong><span>Landing page stays visible before login.</span></div>
+        <div class="panel-item"><strong>Protected Analysis</strong><span>Inference requests still require authentication.</span></div>
+        <div class="panel-item"><strong>Session Return</strong><span>Successful auth sends users back to home.</span></div>
+      </div>
+    </section>
+    <section class="auth-card">
+      <div class="switcher">
+        <a href="/auth/login" class="{% if mode == 'login' %}active{% endif %}">Login</a>
+        <a href="/auth/register" class="{% if mode == 'register' %}active{% endif %}">Register</a>
+      </div>
+      <h2>{% if mode == "register" %}Create account{% else %}Welcome back{% endif %}</h2>
+      <p class="sub">{% if mode == "register" %}Register once and return straight to the NeuroClear home page signed in.{% else %}Sign in and you will be redirected back to the home page with your account visible at the top right.{% endif %}</p>
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %}
+      <form method="post">
+        {% if mode == "register" %}
+        <div class="field">
+          <label for="full_name">Full Name</label>
+          <input id="full_name" name="full_name" type="text" placeholder="Enter your full name" required>
+        </div>
+        {% endif %}
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" placeholder="Choose a username" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="{% if mode == 'register' %}new-password{% else %}current-password{% endif %}" placeholder="Enter your password" required>
+        </div>
+        <button class="btn" type="submit">{% if mode == "register" %}Register and continue{% else %}Login to NeuroClear{% endif %}</button>
+      </form>
+      <div class="helper">
+        Default seeded account is <code>admin</code> / <code>admin123</code>.<br>
+        Registered users are stored in-memory for this running app session.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
