@@ -357,7 +357,6 @@ For each request the backend returns:
 
 ## 🙏 Acknowledgements
 
-- This repository is a fork of [anshupriya11929/Alzheimer-s-disease-prediction-project](https://github.com/anshupriya11929/Alzheimer-s-disease-prediction-project). Thanks to the original authors.
 - Built with [PyTorch](https://pytorch.org/), [SHAP](https://github.com/shap/shap), [LIME](https://github.com/marcotcr/lime), and [Flask](https://flask.palletsprojects.com/).
 - Data used in this project were obtained from the [Alzheimer's Disease Neuroimaging Initiative (ADNI)](https://adni.loni.usc.edu/) database. ADNI investigators contributed to the design and implementation of ADNI and/or provided data but did not participate in the analysis or writing of this work. A complete listing of ADNI investigators is available at [adni.loni.usc.edu/wp-content/uploads/how_to_apply/ADNI_Acknowledgement_List.pdf](https://adni.loni.usc.edu/wp-content/uploads/how_to_apply/ADNI_Acknowledgement_List.pdf).
 
